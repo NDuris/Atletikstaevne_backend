@@ -36,7 +36,7 @@ public class ResultatController {
         List<ResultatDTO> resultatDTOs = resultater.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
-
+        //testing
         return ResponseEntity.ok(resultatDTOs);
     }
 
