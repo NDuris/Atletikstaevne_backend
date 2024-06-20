@@ -3,7 +3,7 @@ name: Java CI
 on:
   push:
     branches:
-      - main  # Skift "main" til din hovedgren, f.eks. "master", hvis det er relevant
+      - master  # Skift "main" til din hovedgren, f.eks. "master", hvis det er relevant
 
 jobs:
   build:
