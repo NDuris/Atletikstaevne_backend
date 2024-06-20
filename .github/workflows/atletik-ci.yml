@@ -1,16 +1,17 @@
-name: Java CI
+name: Java CI with Maven and H2
 
 on:
   push:
     branches:
-      - master  # Skift "main" til din hovedgren, f.eks. "master", hvis det er relevant
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Set up JDK 17
         uses: actions/setup-java@v2
@@ -18,5 +19,9 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build with Maven
-        run: mvn -B clean test  # Kør Maven-testene
+      - name: Build and Test with Maven
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          SPRING_CONFIG_LOCATION: classpath:/application-test.properties
+        run: |
+          mvn -B clean test
