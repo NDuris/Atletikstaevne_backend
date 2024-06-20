@@ -1,4 +1,4 @@
-name: Java CI with Maven and H2
+name: Java CI with Maven and MySQL
 
 on:
   push:
@@ -19,9 +19,25 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Set up MySQL
+        env:
+          MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+          MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+        run: |
+          echo "Testing MySQL connection"
+          sudo apt-get update
+          sudo apt-get install -y mysql-client
+          mysql -h $MYSQL_HOST -P $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD -e "SHOW DATABASES;"
+
       - name: Build and Test with Maven
         env:
           SPRING_PROFILES_ACTIVE: test
           SPRING_CONFIG_LOCATION: classpath:/application-test.properties
+          MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+          MYSQL_PORT: ${{ secrets.MYSQL_PORT }}
+          MYSQL_USER: ${{ secrets.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
         run: |
-          mvn -B clean test
+          mvn -B clean test -Dspring.config.additional-location=classpath:/application-test.properties
