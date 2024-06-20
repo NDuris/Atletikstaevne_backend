@@ -1,5 +1,6 @@
 package com.example.atletikstaevne_backend.models;
 
+import com.example.atletikstaevne_backend.DeltagerEntityListener;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 @Entity
+//@EntityListeners(DeltagerEntityListener.class)
 public class Deltager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
