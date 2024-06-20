@@ -16,10 +16,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adopt'  # Vælg den ønskede JDK distributør
+          distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
-
-      - name: Run Tests
-        run: mvn -B test --file pom.xml
+        run: mvn -B clean test  # Kør Maven-testene
