@@ -1,6 +1,7 @@
 package com.example.atletikstaevne_backend.controllers;
 
 import com.example.atletikstaevne_backend.DTO.ResultatDTO;
+import com.example.atletikstaevne_backend.DTO.ResultatFullDTO;
 import com.example.atletikstaevne_backend.models.Deltager;
 import com.example.atletikstaevne_backend.models.Disciplin;
 import com.example.atletikstaevne_backend.models.Resultat;
@@ -29,15 +30,12 @@ public class ResultatController {
     private DisciplinService disciplinService;
 
     @GetMapping
-    public ResponseEntity<List<ResultatDTO>> getAllResultater() {
+    public ResponseEntity<List<ResultatFullDTO>> getAllResultater() {
         List<Resultat> resultater = resultatService.findAll();
-
-        // Konverter alle resultater til DTO-format
-        List<ResultatDTO> resultatDTOs = resultater.stream()
-                .map(this::convertToDTO)
+        List<ResultatFullDTO> resultatFullDTOs = resultater.stream()
+                .map(this::convertToFullDTO)
                 .collect(Collectors.toList());
-        //testing
-        return ResponseEntity.ok(resultatDTOs);
+        return ResponseEntity.ok(resultatFullDTOs);
     }
 
     @GetMapping("/{id}")
@@ -48,6 +46,15 @@ public class ResultatController {
         }
         ResultatDTO resultatDTO = convertToDTO(resultatOptional.get());
         return ResponseEntity.ok(resultatDTO);
+    }
+
+    // GET endpoint til at hente alle resultater for en deltager
+    @GetMapping("/deltagere/{deltagerId}")
+    public List<ResultatDTO> fetchResultaterForDeltager(@PathVariable Long deltagerId) {
+        List<Resultat> resultater = resultatService.findResultaterForDeltager(deltagerId);
+        return resultater.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     // PUT endpoint til at opdatere et resultat
@@ -116,4 +123,30 @@ public class ResultatController {
         resultatDTO.setDato(resultat.getDato());
         return resultatDTO;
     }
+
+    public ResultatFullDTO convertToFullDTO(Resultat resultat) {
+        ResultatFullDTO resultatFullDTO = new ResultatFullDTO();
+        resultatFullDTO.setResultatId(resultat.getResultatId());
+        resultatFullDTO.setDato(resultat.getDato());
+        resultatFullDTO.setResultatType(resultat.getResultatType());
+        resultatFullDTO.setResultatvaerdi(resultat.getResultatvaerdi());
+
+        Deltager deltager = resultat.getDeltager();
+        if (deltager != null) {
+            resultatFullDTO.setDeltagerId(deltager.getDeltagerId());
+            resultatFullDTO.setDeltagerNavn(deltager.getNavn());
+            resultatFullDTO.setDeltagerKoen(deltager.getKoen());
+            resultatFullDTO.setDeltagerAlder(deltager.getAlder());
+        }
+
+        Disciplin disciplin = resultat.getDisciplin();
+        if (disciplin != null) {
+            resultatFullDTO.setDisciplinId(disciplin.getDisciplinId());
+            resultatFullDTO.setDisciplinNavn(disciplin.getNavn());
+        }
+
+        return resultatFullDTO;
+    }
+
+
 }

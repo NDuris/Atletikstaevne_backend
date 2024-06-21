@@ -14,8 +14,12 @@ public class ResultatService {
     @Autowired
     private ResultatRepository resultatRepository;
 
-    public List<Resultat> findAll() {
+    public List<Resultat> findAllResults() {
         return resultatRepository.findAll();
+    }
+
+    public List<Resultat> findAll() {
+        return resultatRepository.findAllWithDeltagerAndDisciplin();
     }
 
     public Optional<Resultat> findById(Long id) {
@@ -28,5 +32,9 @@ public class ResultatService {
 
     public void deleteById(Long id) {
         resultatRepository.deleteById(id);
+    }
+
+    public List<Resultat> findResultaterForDeltager(Long deltagerId) {
+        return resultatRepository.findResultaterForDeltager(deltagerId);
     }
 }

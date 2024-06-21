@@ -1,9 +1,11 @@
 package com.example.atletikstaevne_backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Resultat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

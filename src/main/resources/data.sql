@@ -1,14 +1,214 @@
--- Indsæt testdata for deltager
+
 INSERT INTO deltager (alder, klub, koen, navn) VALUES
-                                                   (25, 'Klub A', 'Mand', 'Peter Jensen'),
-                                                   (30, 'Klub B', 'Kvinde', 'Anne Petersen');
+                                                   (8, 'Atletik Klub 1', 'M', 'Johan Hansen'),
+                                                   (16, 'Atletik Klub 1', 'F', 'Anna Pedersen'),
+                                                   (13, 'Atletik Klub 1', 'M', 'Peter Jensen'),
+                                                   (15, 'Atletik Klub 1', 'F', 'Maria Nielsen'),
+                                                   (11, 'Atletik Klub 1', 'M', 'Thomas Andersen'),
+                                                   (9, 'Atletik Klub 1', 'F', 'Sofie Kristensen'),
+                                                   (14, 'Atletik Klub 1', 'M', 'Lars Thomsen'),
+                                                   (10, 'Atletik Klub 1', 'F', 'Katrine Poulsen'),
+                                                   (12, 'Atletik Klub 1', 'M', 'Emil Madsen'),
+                                                   (18, 'Atletik Klub 1', 'F', 'Camilla Rasmussen'),
+                                                   (7, 'Atletik Klub 1', 'M', 'Mikkel Sørensen'),
+                                                   (17, 'Atletik Klub 1', 'F', 'Louise Petersen'),
+                                                   (12, 'Atletik Klub 1', 'M', 'Frederik Knudsen'),
+                                                   (13, 'Atletik Klub 1', 'F', 'Julie Johansen'),
+                                                   (14, 'Atletik Klub 1', 'M', 'Simon Laursen'),
+                                                   (15, 'Atletik Klub 1', 'F', 'Malene Olesen'),
+                                                   (16, 'Atletik Klub 1', 'M', 'Kasper Mortensen'),
+                                                   (18, 'Atletik Klub 1', 'F', 'Sara Frandsen'),
+                                                   (10, 'Atletik Klub 1', 'M', 'Jonas Eskildsen'),
+                                                   (7, 'Atletik Klub 1', 'F', 'Nina Hansen'),
 
--- Indsæt testdata for disciplin
+                                                   (11, 'Atletik Klub 2', 'M', 'Rasmus Svendsen'),
+                                                   (12, 'Atletik Klub 2', 'F', 'Pernille Møller'),
+                                                   (16, 'Atletik Klub 2', 'M', 'Henrik Nielsen'),
+                                                   (17, 'Atletik Klub 2', 'F', 'Mette Kristiansen'),
+                                                   (9, 'Atletik Klub 2', 'M', 'Anders Larsen'),
+                                                   (8, 'Atletik Klub 2', 'F', 'Ida Christensen'),
+                                                   (10, 'Atletik Klub 2', 'M', 'Michael Holm'),
+                                                   (15, 'Atletik Klub 2', 'F', 'Lone Carlsen'),
+                                                   (11, 'Atletik Klub 2', 'M', 'Niels Søndergaard'),
+                                                   (18, 'Atletik Klub 2', 'F', 'Helle Jakobsen'),
+                                                   (19, 'Atletik Klub 2', 'M', 'Christian Berg'),
+                                                   (24, 'Atletik Klub 2', 'F', 'Karin Poulsen'),
+                                                   (21, 'Atletik Klub 2', 'M', 'Martin Jacobsen'),
+                                                   (25, 'Atletik Klub 2', 'F', 'Birgitte Thomsen'),
+                                                   (22, 'Atletik Klub 2', 'M', 'Jesper Nielsen'),
+                                                   (26, 'Atletik Klub 2', 'F', 'Gitte Hansen'),
+                                                   (27, 'Atletik Klub 2', 'M', 'Brian Sørensen'),
+                                                   (23, 'Atletik Klub 2', 'F', 'Lisbeth Andersen'),
+                                                   (24, 'Atletik Klub 2', 'M', 'Jan Madsen'),
+                                                   (30, 'Atletik Klub 2', 'F', 'Susanne Jensen'),
+
+                                                   (28, 'Atletik Klub 3', 'M', 'Ole Rasmussen'),
+                                                   (29, 'Atletik Klub 3', 'F', 'Else Petersen'),
+                                                   (20, 'Atletik Klub 3', 'M', 'Erik Kristensen'),
+                                                   (31, 'Atletik Klub 3', 'F', 'Bente Thomsen'),
+                                                   (25, 'Atletik Klub 3', 'M', 'Jørgen Larsen'),
+                                                   (19, 'Atletik Klub 3', 'F', 'Inge Christensen'),
+                                                   (27, 'Atletik Klub 3', 'M', 'Søren Nielsen'),
+                                                   (29, 'Atletik Klub 3', 'F', 'Hanne Sørensen'),
+                                                   (30, 'Atletik Klub 3', 'M', 'Poul Andersen'),
+                                                   (21, 'Atletik Klub 3', 'F', 'Dorte Hansen'),
+                                                   (32, 'Atletik Klub 3', 'M', 'Arne Madsen'),
+                                                   (26, 'Atletik Klub 3', 'F', 'Grethe Jensen'),
+                                                   (23, 'Atletik Klub 3', 'M', 'Kurt Rasmussen'),
+                                                   (31, 'Atletik Klub 3', 'F', 'Anette Petersen'),
+                                                   (28, 'Atletik Klub 3', 'M', 'Preben Kristensen'),
+                                                   (32, 'Atletik Klub 3', 'F', 'Vibeke Thomsen'),
+                                                   (20, 'Atletik Klub 3', 'M', 'Holger Larsen'),
+                                                   (24, 'Atletik Klub 3', 'F', 'Birthe Christensen'),
+                                                   (33, 'Atletik Klub 3', 'M', 'Eigil Nielsen'),
+                                                   (34, 'Atletik Klub 3', 'F', 'Mona Sørensen'),
+
+                                                   (35, 'Atletik Klub 4', 'M', 'Torben Andersen'),
+                                                   (36, 'Atletik Klub 4', 'F', 'Laila Hansen'),
+                                                   (37, 'Atletik Klub 4', 'M', 'Finn Madsen'),
+                                                   (38, 'Atletik Klub 4', 'F', 'Margit Jensen'),
+                                                   (39, 'Atletik Klub 4', 'M', 'Jens Rasmussen'),
+                                                   (40, 'Atletik Klub 4', 'F', 'Aase Petersen'),
+                                                   (41, 'Atletik Klub 4', 'M', 'Per Kristensen'),
+                                                   (42, 'Atletik Klub 4', 'F', 'Gurli Thomsen'),
+                                                   (43, 'Atletik Klub 4', 'M', 'Knud Larsen'),
+                                                   (44, 'Atletik Klub 4', 'F', 'Ulla Christensen'),
+                                                   (45, 'Atletik Klub 4', 'M', 'Karl Nielsen'),
+                                                   (46, 'Atletik Klub 4', 'F', 'Tove Sørensen'),
+                                                   (47, 'Atletik Klub 4', 'M', 'Leif Andersen'),
+                                                   (48, 'Atletik Klub 4', 'F', 'Ruth Hansen'),
+                                                   (49, 'Atletik Klub 4', 'M', 'Hans Madsen'),
+                                                   (50, 'Atletik Klub 4', 'F', 'Lone Jensen'),
+                                                   (51, 'Atletik Klub 4', 'M', 'Erling Rasmussen'),
+                                                   (52, 'Atletik Klub 4', 'F', 'Jytte Petersen'),
+                                                   (53, 'Atletik Klub 4', 'M', 'Bent Kristensen'),
+                                                   (54, 'Atletik Klub 4', 'F', 'Inger Thomsen'),
+
+                                                   (55, 'Atletik Klub 5', 'M', 'Keld Larsen'),
+                                                   (33, 'Atletik Klub 5', 'F', 'Ellen Christensen'),
+                                                   (34, 'Atletik Klub 5', 'M', 'Arvid Nielsen'),
+                                                   (35, 'Atletik Klub 5', 'F', 'Signe Sørensen'),
+                                                   (36, 'Atletik Klub 5', 'M', 'Oscar Andersen'),
+                                                   (37, 'Atletik Klub 5', 'F', 'Agnes Kjeldsen'),
+                                                   (38, 'Atletik Klub 5', 'M', 'Rolf Mikkelsen'),
+                                                   (39, 'Atletik Klub 5', 'F', 'Tilde Bak'),
+                                                   (40, 'Atletik Klub 5', 'M', 'Felix Clausen');
+
 INSERT INTO disciplin (navn, resultat_type) VALUES
-                                               ('100 meter sprint', 'TID'),
-                                               ('Længdespring', 'AFSTAND');
+                                                ('1-milløb (atletik)', 'TID'),
+                                                ('10.000-meterløb (atletik)', 'TID'),
+                                                ('100-meterløb (atletik)', 'TID'),
+                                                ('110 meter hækkeløb', 'TID'),
+                                                ('1500-meterløb (atletik)', 'TID'),
+                                                ('200 meter hækkeløb', 'TID'),
+                                                ('200-meterløb (atletik)', 'TID'),
+                                                ('3000-meterløb (atletik)', 'TID'),
+                                                ('4 × 100-meterløb (atletik)', 'TID'),
+                                                ('4 × 400-meterløb (atletik)', 'TID'),
+                                                ('400 meter hækkeløb', 'TID'),
+                                                ('400-meterløb (atletik)', 'TID'),
+                                                ('4x400-meterløb blandet hold (atletik)', 'TID'),
+                                                ('5000-meter-løb (atletik)', 'TID'),
+                                                ('60 meter hækkeløb', 'TID'),
+                                                ('60-meterløb (atletik)', 'TID'),
+                                                ('800-meterløb (atletik)', 'TID'),
+                                                ('Cross (løbesport)', 'TID'),
+                                                ('Diskoskast (atletik)', 'AFSTAND'),
+                                                ('Femkamp (atletik)', 'POINT'),
+                                                ('Forhindringsløb (atletik)', 'TID'),
+                                                ('Halvmaratonløb (løbesport)', 'TID'),
+                                                ('Hammerkast (atletik)', 'AFSTAND'),
+                                                ('Højdespring (atletik)', 'HOEJDE'),
+                                                ('Højdespring uden tilløb (atletik)', 'HOEJDE'),
+                                                ('Kastefemkamp (atletik)', 'POINT'),
+                                                ('Kastetrekamp', 'POINT'),
+                                                ('Kuglestød (atletik)', 'AFSTAND'),
+                                                ('Kørestolsrace', 'TID'),
+                                                ('Længdespring (atletik)', 'AFSTAND'),
+                                                ('Længdespring uden tilløb (atletik)', 'AFSTAND'),
+                                                ('Maratonløb (løbesport)', 'TID'),
+                                                ('Slyngboldkast (atletik)', 'AFSTAND'),
+                                                ('Spydkast (atletik)', 'AFSTAND'),
+                                                ('Stangspring (atletik)', 'HOEJDE'),
+                                                ('Syvkamp (atletik)', 'POINT'),
+                                                ('Tikamp (atletik)', 'POINT'),
+                                                ('Tovtrækning', 'TID'),
+                                                ('Trail (løbesport)', 'TID'),
+                                                ('Trespring (atletik)', 'AFSTAND'),
+                                                ('Trespring uden tilløb (atletik)', 'AFSTAND'),
+                                                ('Vægtkast (atletik)', 'AFSTAND');
 
--- Indsæt testdata for resultat
 INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
-                                                                                         ('2023-01-01', 1, 1, 'TID', '0:12.35'),
-                                                                                         ('2023-01-02', 2, 2, 'AFSTAND', '7.80 meter');
+                                                                                          ('2024-06-01', 1, 3, 'TID', '10.85'),
+                                                                                          ('2024-06-01', 2, 3, 'TID', '11.20'),
+                                                                                          ('2024-06-01', 3, 3, 'TID', '12.05'),
+                                                                                          ('2024-06-01', 4, 3, 'TID', '11.50'),
+                                                                                          ('2024-06-01', 5, 3, 'TID', '10.95');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-02', 6, 5, 'TID', '4:20.15'),
+                                                                                          ('2024-06-02', 7, 5, 'TID', '4:35.40'),
+                                                                                          ('2024-06-02', 8, 5, 'TID', '4:42.75'),
+                                                                                          ('2024-06-02', 9, 5, 'TID', '4:25.30'),
+                                                                                          ('2024-06-02', 10, 5, 'TID', '4:18.90');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-02', 15, 9, 'TID', '42.10'),
+                                                                                          ('2024-06-02', 16, 9, 'TID', '41.80'),
+                                                                                          ('2024-06-02', 17, 9, 'TID', '42.50'),
+                                                                                          ('2024-06-02', 18, 9, 'TID', '41.90'),
+                                                                                          ('2024-06-02', 19, 9, 'TID', '43.20');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-03', 12, 10, 'TID', '3:45.20'),
+                                                                                          ('2024-06-03', 15, 10, 'TID', '3:50.10'),
+                                                                                          ('2024-06-03', 18, 10, 'TID', '3:48.75'),
+                                                                                          ('2024-06-03', 21, 10, 'TID', '3:52.40'),
+                                                                                          ('2024-06-03', 24, 10, 'TID', '3:47.90');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-03', 5, 18, 'TID', '28:15'),
+                                                                                          ('2024-06-03', 14, 18, 'TID', '30:02'),
+                                                                                          ('2024-06-03', 23, 18, 'TID', '27:45'),
+                                                                                          ('2024-06-03', 32, 18, 'TID', '29:10'),
+                                                                                          ('2024-06-03', 41, 18, 'TID', '31:20');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-03', 8, 19, 'AFSTAND', '42.5'),
+                                                                                          ('2024-06-03', 17, 19, 'AFSTAND', '39.8'),
+                                                                                          ('2024-06-03', 26, 19, 'AFSTAND', '41.2'),
+                                                                                          ('2024-06-03', 35, 19, 'AFSTAND', '38.6'),
+                                                                                          ('2024-06-03', 44, 19, 'AFSTAND', '43.1');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-04', 12, 20, 'POINT', '3450'),
+                                                                                          ('2024-06-04', 25, 20, 'POINT', '3680'),
+                                                                                          ('2024-06-04', 38, 20, 'POINT', '3520'),
+                                                                                          ('2024-06-04', 51, 20, 'POINT', '3300'),
+                                                                                          ('2024-06-04', 64, 20, 'POINT', '3700');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-05', 7, 21, 'TID', '00:21:45'),
+                                                                                          ('2024-06-05', 22, 21, 'TID', '00:23:10'),
+                                                                                          ('2024-06-05', 45, 21, 'TID', '00:25:05'),
+                                                                                          ('2024-06-05', 68, 21, 'TID', '00:22:55'),
+                                                                                          ('2024-06-05', 83, 21, 'TID', '00:24:30');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-06', 11, 23, 'AFSTAND', '48.75'),
+                                                                                          ('2024-06-06', 29, 23, 'AFSTAND', '52.10'),
+                                                                                          ('2024-06-06', 45, 23, 'AFSTAND', '47.80'),
+                                                                                          ('2024-06-06', 67, 23, 'AFSTAND', '50.25'),
+                                                                                          ('2024-06-06', 89, 23, 'AFSTAND', '49.95');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-07', 5, 24, 'HOEJDE', '1.70'),
+                                                                                          ('2024-06-07', 18, 24, 'HOEJDE', '1.65'),
+                                                                                          ('2024-06-07', 34, 24, 'HOEJDE', '1.80'),
+                                                                                          ('2024-06-07', 52, 24, 'HOEJDE', '1.75'),
+                                                                                          ('2024-06-07', 76, 24, 'HOEJDE', '1.68');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-07', 7, 25, 'HOEJDE', '1.20'),
+                                                                                          ('2024-06-07', 22, 25, 'HOEJDE', '1.15'),
+                                                                                          ('2024-06-07', 43, 25, 'HOEJDE', '1.25'),
+                                                                                          ('2024-06-07', 61, 25, 'HOEJDE', '1.18'),
+                                                                                          ('2024-06-07', 85, 25, 'HOEJDE', '1.22');
+INSERT INTO resultat (dato, deltager_id, disciplin_id, resultat_type, resultatvaerdi) VALUES
+                                                                                          ('2024-06-08', 14, 26, 'POINT', '3200'),
+                                                                                          ('2024-06-08', 32, 26, 'POINT', '2800'),
+                                                                                          ('2024-06-08', 57, 26, 'POINT', '3100'),
+                                                                                          ('2024-06-08', 71, 26, 'POINT', '3000'),
+                                                                                          ('2024-06-08', 92, 26, 'POINT', '2950');
+
+                                                

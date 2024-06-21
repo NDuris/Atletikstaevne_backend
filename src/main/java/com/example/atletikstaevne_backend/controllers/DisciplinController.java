@@ -1,7 +1,9 @@
 package com.example.atletikstaevne_backend.controllers;
 
 import com.example.atletikstaevne_backend.DTO.DisciplinDTO;
+import com.example.atletikstaevne_backend.models.Deltager;
 import com.example.atletikstaevne_backend.models.Disciplin;
+import com.example.atletikstaevne_backend.models.Resultat;
 import com.example.atletikstaevne_backend.models.ResultatType;
 import com.example.atletikstaevne_backend.services.DisciplinService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,16 @@ public class DisciplinController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/{id}/deltagere")
+    public List<Deltager> getDeltagereByDisciplinId(@PathVariable Long id) {
+        return disciplinService.findDeltagereByDisciplinId(id);
+    }
+
+    @GetMapping("/{id}/resultater")
+    public List<Resultat> getResultaterByDisciplinId(@PathVariable Long id) {
+        return disciplinService.findResultaterByDisciplinId(id);
     }
 
     @PostMapping

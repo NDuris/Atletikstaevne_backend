@@ -1,6 +1,8 @@
 package com.example.atletikstaevne_backend.services;
 
+import com.example.atletikstaevne_backend.models.Deltager;
 import com.example.atletikstaevne_backend.models.Disciplin;
+import com.example.atletikstaevne_backend.models.Resultat;
 import com.example.atletikstaevne_backend.repositorys.DisciplinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,14 @@ public class DisciplinService {
 
     public Optional<Disciplin> findById(Long id) {
         return disciplinRepository.findById(id);
+    }
+
+    public List<Deltager> findDeltagereByDisciplinId(Long disciplinId) {
+        return disciplinRepository.findDeltagereByDisciplinId(disciplinId);
+    }
+
+    public List<Resultat> findResultaterByDisciplinId(Long disciplinId) {
+        return disciplinRepository.findResultaterByDisciplinId(disciplinId);
     }
 
     public Disciplin save(Disciplin disciplin) {
