@@ -50,12 +50,13 @@ public class ResultatController {
 
     // GET endpoint til at hente alle resultater for en deltager
     @GetMapping("/deltagere/{deltagerId}")
-    public List<ResultatDTO> fetchResultaterForDeltager(@PathVariable Long deltagerId) {
+    public List<ResultatFullDTO> fetchResultaterForDeltager(@PathVariable Long deltagerId) {
         List<Resultat> resultater = resultatService.findResultaterForDeltager(deltagerId);
         return resultater.stream()
-                .map(this::convertToDTO)
+                .map(this::convertToFullDTO)
                 .collect(Collectors.toList());
     }
+
 
     // PUT endpoint til at opdatere et resultat
     @PutMapping("/{id}")
@@ -144,6 +145,8 @@ public class ResultatController {
             resultatFullDTO.setDisciplinId(disciplin.getDisciplinId());
             resultatFullDTO.setDisciplinNavn(disciplin.getNavn());
         }
+        System.out.println(resultatFullDTO);
+        System.out.println(resultat);
 
         return resultatFullDTO;
     }

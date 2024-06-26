@@ -14,7 +14,6 @@ public class ResultatFullDTO {
     private String deltagerNavn;
     private String deltagerKoen;
     private int deltagerAlder;
-
     private Long disciplinId;
     private String disciplinNavn;
 

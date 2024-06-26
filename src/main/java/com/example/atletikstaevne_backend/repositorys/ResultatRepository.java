@@ -14,4 +14,7 @@ public interface ResultatRepository extends JpaRepository<Resultat, Long> {
 
     @Query("SELECT r FROM Resultat r JOIN FETCH r.deltager JOIN FETCH r.disciplin")
     List<Resultat> findAllWithDeltagerAndDisciplin();
+
+    @Query("SELECT r, r.disciplin FROM Resultat r JOIN FETCH r.deltager JOIN FETCH r.disciplin WHERE r.deltager.deltagerId = :deltagerId")
+    List<Resultat> findResultaterForDeltagerWithDisciplin(@Param("deltagerId") Long deltagerId);
 }

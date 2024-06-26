@@ -13,13 +13,14 @@ public class Resultat {
     @Enumerated(EnumType.STRING)
     private ResultatType resultatType;
     private LocalDate dato;
+    @Column(nullable = false)
     private String resultatvaerdi;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deltager_id")
     private Deltager deltager;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "disciplin_id")
     private Disciplin disciplin;
 

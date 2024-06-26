@@ -1,10 +1,12 @@
 package com.example.atletikstaevne_backend;
 
+import com.example.atletikstaevne_backend.DTO.DeltagerDTO;
+import com.example.atletikstaevne_backend.DTO.DisciplinDTO;
 import com.example.atletikstaevne_backend.DTO.ResultatDTO;
-import com.example.atletikstaevne_backend.models.ResultatType;
 import com.example.atletikstaevne_backend.repositorys.DeltagerRepository;
 import com.example.atletikstaevne_backend.repositorys.DisciplinRepository;
 import com.example.atletikstaevne_backend.repositorys.ResultatRepository;
+import com.example.atletikstaevne_backend.models.ResultatType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,7 +42,7 @@ public class ResultatControllerTest {
     private DisciplinRepository disciplinRepository;
 
     @Autowired
-    private ObjectMapper objectMapper; // For converting objects to JSON
+    private ObjectMapper objectMapper;
 
     @BeforeEach
     public void setup() {
@@ -52,55 +54,28 @@ public class ResultatControllerTest {
     @Test
     public void testGetAllResultater() throws Exception {
         // Setup
-        com.example.atletikstaevne_backend.models.Deltager deltager = new com.example.atletikstaevne_backend.models.Deltager();
-        deltager.setNavn("John Doe");
-        deltager.setKoen("Male");
-        deltager.setAlder(30);
-        deltager.setKlub("ABC Club");
-        deltagerRepository.save(deltager);
-
-        com.example.atletikstaevne_backend.models.Disciplin disciplin = new com.example.atletikstaevne_backend.models.Disciplin();
-        disciplin.setNavn("100m løb");
-        disciplin.setResultatType(ResultatType.TID);
-        disciplinRepository.save(disciplin);
-
-        com.example.atletikstaevne_backend.models.Resultat resultat = new com.example.atletikstaevne_backend.models.Resultat();
-        resultat.setResultatType(ResultatType.TID);
-        resultat.setDato(LocalDate.now());
-        resultat.setResultatvaerdi("10.00");
-        resultat.setDeltager(deltager);
-        resultat.setDisciplin(disciplin);
-        resultatRepository.save(resultat);
+        Long deltagerId = createDeltager();
+        Long disciplinId = createDisciplin();
+        createResultat(deltagerId, disciplinId);
 
         // Perform and verify
         mockMvc.perform(get("/api/resultater"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].resultatvaerdi", is("10.00")));
+                .andExpect(jsonPath("$[0].resultatvaerdi", is("10.5")));
     }
 
     @Test
     public void testCreateResultat() throws Exception {
         // Setup
-        com.example.atletikstaevne_backend.models.Deltager deltager = new com.example.atletikstaevne_backend.models.Deltager();
-        deltager.setNavn("John Doe");
-        deltager.setKoen("Male");
-        deltager.setAlder(30);
-        deltager.setKlub("ABC Club");
-        deltagerRepository.save(deltager);
-
-        com.example.atletikstaevne_backend.models.Disciplin disciplin = new com.example.atletikstaevne_backend.models.Disciplin();
-        disciplin.setNavn("100m løb");
-        disciplin.setResultatType(ResultatType.TID);
-        disciplinRepository.save(disciplin);
-
+        Long deltagerId = createDeltager();
+        Long disciplinId = createDisciplin();
         ResultatDTO resultatDTO = new ResultatDTO();
-        resultatDTO.setResultatType(ResultatType.TID);
+        resultatDTO.setDeltagerId(deltagerId);
+        resultatDTO.setDisciplinId(disciplinId);
         resultatDTO.setDato(LocalDate.now());
-        resultatDTO.setResultatvaerdi("10.00");
-        resultatDTO.setDeltagerId(deltager.getDeltagerId());
-        resultatDTO.setDisciplinId(disciplin.getDisciplinId());
+        resultatDTO.setResultatvaerdi("10.5");
 
         // Perform and verify
         mockMvc.perform(post("/api/resultater")
@@ -108,73 +83,78 @@ public class ResultatControllerTest {
                         .content(objectMapper.writeValueAsString(resultatDTO)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.resultatvaerdi", is("10.00")));
+                .andExpect(jsonPath("$.resultatvaerdi", is("10.5")));
     }
 
     @Test
     public void testUpdateResultat() throws Exception {
         // Setup
-        com.example.atletikstaevne_backend.models.Deltager deltager = new com.example.atletikstaevne_backend.models.Deltager();
-        deltager.setNavn("John Doe");
-        deltager.setKoen("Male");
-        deltager.setAlder(30);
-        deltager.setKlub("ABC Club");
-        deltagerRepository.save(deltager);
+        Long deltagerId = createDeltager();
+        Long disciplinId = createDisciplin();
+        Long resultatId = createResultat(deltagerId, disciplinId);
 
-        com.example.atletikstaevne_backend.models.Disciplin disciplin = new com.example.atletikstaevne_backend.models.Disciplin();
-        disciplin.setNavn("100m løb");
-        disciplin.setResultatType(ResultatType.TID);
-        disciplinRepository.save(disciplin);
-
-        com.example.atletikstaevne_backend.models.Resultat resultat = new com.example.atletikstaevne_backend.models.Resultat();
-        resultat.setResultatType(ResultatType.TID);
-        resultat.setDato(LocalDate.now());
-        resultat.setResultatvaerdi("10.00");
-        resultat.setDeltager(deltager);
-        resultat.setDisciplin(disciplin);
-        resultatRepository.save(resultat);
-
-        ResultatDTO updatedResultatDTO = new ResultatDTO();
-        updatedResultatDTO.setResultatType(ResultatType.TID);
-        updatedResultatDTO.setDato(LocalDate.now());
-        updatedResultatDTO.setResultatvaerdi("9.50");
-        updatedResultatDTO.setDeltagerId(deltager.getDeltagerId());
-        updatedResultatDTO.setDisciplinId(disciplin.getDisciplinId());
+        // Modify DTO
+        ResultatDTO resultatDTO = new ResultatDTO();
+        resultatDTO.setDeltagerId(deltagerId);
+        resultatDTO.setDisciplinId(disciplinId);
+        resultatDTO.setDato(LocalDate.now());
+        resultatDTO.setResultatvaerdi("12.3");
 
         // Perform and verify
-        mockMvc.perform(put("/api/resultater/" + resultat.getResultatId())
+        mockMvc.perform(put("/api/resultater/" + resultatId)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(updatedResultatDTO)))
+                        .content(objectMapper.writeValueAsString(resultatDTO)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.resultatvaerdi", is("9.50")));
+                .andExpect(jsonPath("$.resultatvaerdi", is("12.3")));
     }
 
     @Test
     public void testDeleteResultat() throws Exception {
         // Setup
-        com.example.atletikstaevne_backend.models.Deltager deltager = new com.example.atletikstaevne_backend.models.Deltager();
-        deltager.setNavn("John Doe");
-        deltager.setKoen("Male");
-        deltager.setAlder(30);
-        deltager.setKlub("ABC Club");
-        deltagerRepository.save(deltager);
-
-        com.example.atletikstaevne_backend.models.Disciplin disciplin = new com.example.atletikstaevne_backend.models.Disciplin();
-        disciplin.setNavn("100m løb");
-        disciplin.setResultatType(ResultatType.TID);
-        disciplinRepository.save(disciplin);
-
-        com.example.atletikstaevne_backend.models.Resultat resultat = new com.example.atletikstaevne_backend.models.Resultat();
-        resultat.setResultatType(ResultatType.TID);
-        resultat.setDato(LocalDate.now());
-        resultat.setResultatvaerdi("10.00");
-        resultat.setDeltager(deltager);
-        resultat.setDisciplin(disciplin);
-        resultatRepository.save(resultat);
+        Long deltagerId = createDeltager();
+        Long disciplinId = createDisciplin();
+        Long resultatId = createResultat(deltagerId, disciplinId);
 
         // Perform and verify
-        mockMvc.perform(delete("/api/resultater/" + resultat.getResultatId()))
+        mockMvc.perform(delete("/api/resultater/" + resultatId))
                 .andExpect(status().isNoContent());
+    }
+
+    private Long createDeltager() throws Exception {
+        DeltagerDTO deltagerDTO = new DeltagerDTO();
+        deltagerDTO.setNavn("John Doe");
+        deltagerDTO.setKoen("Male");
+        deltagerDTO.setAlder(30);
+        deltagerDTO.setKlub("ABC Club");
+        String response = mockMvc.perform(post("/api/deltagere")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(deltagerDTO)))
+                .andReturn().getResponse().getContentAsString();
+        return objectMapper.readValue(response, DeltagerDTO.class).getId();
+    }
+
+    private Long createDisciplin() throws Exception {
+        DisciplinDTO disciplinDTO = new DisciplinDTO();
+        disciplinDTO.setNavn("100m løb");
+        disciplinDTO.setResultatType(ResultatType.TID);
+        String response = mockMvc.perform(post("/api/discipliner")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(disciplinDTO)))
+                .andReturn().getResponse().getContentAsString();
+        return objectMapper.readValue(response, DisciplinDTO.class).getId();
+    }
+
+    private Long createResultat(Long deltagerId, Long disciplinId) throws Exception {
+        ResultatDTO resultatDTO = new ResultatDTO();
+        resultatDTO.setDeltagerId(deltagerId);
+        resultatDTO.setDisciplinId(disciplinId);
+        resultatDTO.setDato(LocalDate.now());
+        resultatDTO.setResultatvaerdi("10.5");
+        String response = mockMvc.perform(post("/api/resultater")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(resultatDTO)))
+                .andReturn().getResponse().getContentAsString();
+        return objectMapper.readValue(response, ResultatDTO.class).getId();
     }
 }

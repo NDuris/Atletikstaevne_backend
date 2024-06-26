@@ -33,7 +33,7 @@ public class DeltagerControllerTest {
     private DisciplinRepository disciplinRepository;
 
     @Autowired
-    private ObjectMapper objectMapper; // For converting objects to JSON
+    private ObjectMapper objectMapper; // converterer objects til JSON
 
     @BeforeEach
     public void setup() {

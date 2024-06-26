@@ -33,8 +33,11 @@ public class ResultatService {
     public void deleteById(Long id) {
         resultatRepository.deleteById(id);
     }
-
+//
+//    public List<Resultat> findResultaterForDeltager(Long deltagerId) {
+//        return resultatRepository.findResultaterForDeltager(deltagerId);
+//    }
     public List<Resultat> findResultaterForDeltager(Long deltagerId) {
-        return resultatRepository.findResultaterForDeltager(deltagerId);
+        return resultatRepository.findResultaterForDeltagerWithDisciplin(deltagerId);
     }
 }
